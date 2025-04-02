@@ -18,8 +18,8 @@ const port = process.env.PORT || 5000;
 /**
  * Connects to the database.
  */
-//import connectDB from "./config/db";
-//connectDB();
+import  { connectDB } from "./config/db";
+connectDB();
 
 /**
  * Creates an Express application instance.
