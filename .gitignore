@@ -134,3 +134,24 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# Vim temporary files
+*.swp
+*.swo
+*.swn
+*.swl
+*.un~
+Session.vim
+Session.vim.lock
+
+# Vim backup files
+*~
+*.bak
+
+# Other Vim-related files/directories (optional but sometimes useful)
+*.tmp
+*.diff
+*.log
+/backup/
+/undo/
