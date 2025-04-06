@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/swatini/public_html/backend/
+    - export REPO_SUBDIR=/home/swatini/repositories/swati-frontend/
+    - echo "Deploying contents of $REPO_SUBDIR/dist to $DEPLOYPATH"
+    - echo "Copying contents of $REPO_SUBDIR/dist to $DEPLOYPATH"
+    - cp -r $REPO_SUBDIR/dist/* $DEPLOYPATH/
+    - echo "Deployment complete!"
