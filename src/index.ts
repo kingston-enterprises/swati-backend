@@ -2,8 +2,8 @@ import express from "express";
 import * as dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
-//import errorHandler from "./middleware/errorMiddleware";
-
+import errorHandler from "./middleware/errorMiddleware";
+import authRouter from "./routes/authRoutes";
 
 
 /**
@@ -18,7 +18,7 @@ const port = process.env.PORT || 5000;
 /**
  * Connects to the database.
  */
-import  { connectDB } from "./config/db";
+import  connectDB from "./config/db";
 connectDB();
 
 /**
@@ -40,8 +40,11 @@ const app = express();
 
 // OR, Enable CORS for specific origins (recommended)
 let corsOptions = {
-  origin: [],
+  origin: ['http://localhost:5173'],
   credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization', 'authToken'], // List of allowed headers
+  exposedHeaders: ['authToken'], // **Crucially, this is what exposes the header to the client**
+
 };
 
 app.use(cors(corsOptions));
@@ -66,7 +69,7 @@ app.use(logger("common"));
 app.get('/', (req: any, res: any) => {
   res.send('Hello World!')
 })
-
+app.use("/v0/auth/", authRouter);
 /**
  * Starts the server on the specified port and logs a message.
  */
